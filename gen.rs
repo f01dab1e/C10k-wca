@@ -1,10 +1,5 @@
-#!/usr/bin/env bash
-/*
-set -e
-echo "[BUILD] gen.rs" 1>&2
-rustc $0 -o ${0/.rs/.bin} -Cdebuginfo=1 --edition 2021 -Cpanic=abort
-exec ${0/.rs/.bin} $@
-*/
+#!/bin/sh
+//usr/bin/env rustc $0 -o a.out && ./a.out $@ && rm ./a.out ; exit
 
 fn main() {
     let count = std::env::args().nth(1).unwrap().parse::<u64>().unwrap();
@@ -30,5 +25,6 @@ fn main() {{
 }}"
     );
 
+    let _ = std::fs::create_dir("src");
     std::fs::write("src/main.rs", code.trim()).unwrap();
 }
