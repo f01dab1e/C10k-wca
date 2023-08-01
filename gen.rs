@@ -1,5 +1,5 @@
 #!/bin/sh
-//usr/bin/env rustc $0 -o a.out && ./a.out $@ && rm ./a.out ; exit
+//usr/bin/env rustc $0 -o ./gen.bin -Cdebuginfo=1 --edition 2021 -Cpanic=abort && ./gen.bin $@ && rm ./gen.bin ; exit
 
 fn main() {
     let count = std::env::args().nth(1).unwrap().parse::<u64>().unwrap();
